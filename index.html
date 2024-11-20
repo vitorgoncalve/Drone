@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Site de Drones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #4caf50; /* Verde vibrante */
+            color: white;
+            padding: 20px;
+        }
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header .logo {
+            max-width: 100px;
+        }
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .menu a:hover {
+            color: #d9d9d9; /* Efeito hover */
+        }
+        .search {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+        .header-bottom {
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            padding-top: 10px;
+        }
+        .main-blok {
+            padding: 20px;
+        }
+        .content-wrapper {
+            display: flex;
+            gap: 20px; /* Espaçamento entre o sidebar e o conteúdo */
+        }
+        .sidebar-menu {
+            flex: 1;
+            min-width: 200px; /* Largura mínima para o sidebar */
+            background-color: #e8f5e9; /* Fundo claro para o sidebar */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-promo, .menu-side, .menu-other {
+            margin-bottom: 20px;
+        }
+        .menu-promo_list, .menu-side_list, .menu-other_list {
+            list-style: none;
+            padding: 0;
+        }
+        .menu-promo_list a, .menu-side_list a, .menu-other_list a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .menu-promo_list a:hover, .menu-side_list a:hover, .menu-other_list a:hover {
+            background-color: #c8e6c9; /* Efeito hover para links */
+        }
+        .card-product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .title-product {
+            margin: 0 0 20px;
+            font-size: 1.5em;
+            color: #4caf50;
+        }
+        .card-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Espaçamento entre os cartões */
+        }
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            flex: 1 1 calc(25% - 20px); /* 4 cards por linha */
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+        }
+        .card img {
+            max-width: 100%;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .info-product {
+            padding: 10px;
+            flex-grow: 1;
+        }
+        .price-cart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #4caf50; /* Verde destaque para o preço */
+        }
+        .cart {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cart:hover {
+            background-color: #388e3c; /* Efeito hover no botão */
+        }
+        .work-info {
+            margin-top: 20px;
+            background-color: #e8f5e9; /* Fundo claro */
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 calc(50% - 20px); /* 2 cards por linha em telas menores */
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                flex: 1 1 100%; /* 1 card por linha em telas muito pequenas */
+            }
+            .sidebar-menu {
+                display: none; /* Ocultar sidebar em telas muito pequenas */
+            }
+            .header .search {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <img src="https://lh3.googleusercontent.com/jda7_W9oihnx8UwEk8X8tGEUyWLdXeP_RH-Jfud1CtUqFTDdwUjQsvD_wVfh0DlDtYI" alt="Logo" class="logo">
+                <nav class="menu">
+                    <ul class="menu-list">
+                        <li class="list-item"><a href="#">Catálogo de Arquivos</a></li>
+                        <li class="list-item"><a href="#">Na Revista</a></li>
+                        <li class="list-item"><a href="#">Envio e Transferência</a></li>
+                        <li class="list-item"><a href="#">Cesta</a></li>
+                    </ul>
+                </nav>
+                <input type="text" class="search" placeholder="Buscar...">
+            </div>
+            <div class="header-bottom">
+                <nav class="menu menu-bottom">
+                    <ul class="menu-list_bottom">
+                        <li class="list-item"><a href="#">Comparar</a></li>
+                        <li class="list-item"><a href="#">Favoritos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-blok">
+            <div class="container">
+                <div class="content-wrapper">
+                    <aside class="sidebar-menu">
+                        <nav class="menu-promo">
+                            <ul class="menu-promo_list">
+                                <li class="promo-list_item item-1"><a href="#">Novos Itens</a></li>
+                                <li class="promo-list_item item-2"><a href="#">Mais Vendidos</a></li>
+                                <li class="promo-list_item item-3"><a href="#">Oferta</a></li>
+                            </ul>
+                        </nav>
+                        <nav class="menu-side">
+                            <ul class="menu-side_list">
+                                <li class="side-list_item"><a href="#">Para Iniciantes</a></li>
+                                <li class="side-list_item"><a href="#">Para Amantes</a></li>
+                                <li class="side-list_item"><a href="#">Profissional</a></li>
+                                <li class="side-list_item"><a href="#">Corrida</a></li>
+                                <li class="side-list_item"><a href="#">Com Câmera</a></li>
+                                <li class="side-list_item dropdown">
+                                    <a href="#">Peças de Reposição</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Molduras</a></li>
+                                        <li><a href="#">Hélices</a></li>
+                                        <li><a href="#">Chassis</a></li>
+                                        <li><a href="#">Baterias</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                        <nav class="menu-other">
+                            <ul class="menu-other_list">
+                                <li class="other-list_item dropdown">
+                                    <a href="#">Produtos Relacionados</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Equipamento de Vídeo</a></li>
+                                        <li><a href="#">Fixações</a></li>
+                                        <li><a href="#">Equipamento de Controle</a></li>
+                                        <li><a href="#">Armazenamento</a></li>
+                                    </ul>
+                                </li>
+                                <li class="other-list_item"><a href="#">Outros</a></li>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <div class="card-product">
+                        <h2 class="title-product">Populares...</h2>
+                        <div class="card-list">
+                            <div class="card">
+                                <img src="https://shopntoys.ru/wa-data/public/shop/products/04/20/22004/images/37998/37998.667.jpg" alt="Quadricóptero">
+                                <div class="info-product">
+                                    <p class="name">Quadricóptero Hubsan Zino Mini</p>
+                                    <p class="description">Modelo novo de alta qualidade, prático e compacto para armazenamento e transporte.</p>
+                                    <p class="rating">Classificação: 4,9</p>
+                                    <div class="price-cart">
+                                        <p class="price">R$ 69.999,00</p>
+                                        <button class="cart" onclick="adicionarAoCarrinho('Quadricóptero Hubsan Zino Mini')">Adicionar ao Carrinho</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="https://avatars.mds.yandex.net/get-mpic/5303201/img_id5145964626699806109.jpeg/orig" alt="Quadricóptero">
+                                <div class="info-product">
+                                    <p class="name">Quadricóptero SJRC F7 Pro 4K</p>
+                                    <p class="description">Esta novidade possui características de voo excelentes e alta capacidade de filmagem.</p>
+                                    <p class="rating">Classificação: 4,7</p>
+                                    <div class="price-cart">
+                                        <p class="price">R$ 21.699,00</p>
+                                        <button class="cart" onclick="adicionarAoCarrinho('Quadricóptero SJRC F7 Pro 4K')">Adicionar ao Carrinho</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="https://avatars.mds.yandex.net/get-mpic/1571888/img_id7625564271589342506.jpeg/orig" alt="Quadricóptero">
+                                <div class="info-product">
+                                    <p class="name">Quadricóptero Syma X5UW</p>
+                                    <p class="description">Modelo clássico com motores coletores.</p>
+                                    <p class="rating">Classificação: 4,5</p>
+                                    <div class="price-cart">
+                                        <p class="price">R$ 5.299,00</p>
+                                        <button class="cart" onclick="adicionarAoCarrinho('Quadricóptero Syma X5UW')">Adicionar ao Carrinho</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.icover.ru/upload/iblock/492/492d63142d934a3ec90a693e8d2350d5.jpg" alt="Quadricóptero">
+                                <div class="info-product">
+                                    <p class="name">Quadricóptero Syma X8HW</p>
+                                    <p class="description">Capaz de se mover suavemente, ideal para gravações de qualidade, com transmissão de vídeo ao vivo.</p>
+                                    <p class="rating">Classificação: 4,3</p>
+                                    <div class="price-cart">
+                                        <p class="price">R$ 7.699,00</p>
+                                        <button class="cart" onclick="adicionarAoCarrinho('Quadricóptero Syma X8HW')">Adicionar ao Carrinho</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="work-info">
+            <div class="container">
+                <div class="work-wrapper">
+                    <div class="work-left">
+                        <a href="#">Garantia</a>
+                        <a href="#">Devolução</a>
+                    </div>
+                    <div class="work-right">
+                        <a href="#">Chat de Suporte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <p class="contact">Contatos</p>
+                <p class="phone">Telefone: +7 (812)-812-81-81</p>
+                <p class="link">Links: <a href="#">kvadrocopter.ru</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function adicionarAoCarrinho(produto) {
+            alert(produto + ' foi adicionado ao carrinho!');
+        }
+    </script>
+</body>
+</html>
